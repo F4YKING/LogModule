@@ -24,7 +24,7 @@ LogModule.Data = { {} }
 ---- functions ----
 -- Local Functions
 local function CheckMessage(msg) -- Checks if message is the same as 'sendLogsCommand'
-	return string.find(string.lower(msg), Settings.SendLogsCommand) ~= nil
+	return string.match(string.lower(msg), Settings.SendLogsCommand) ~= nil
 end
 
 local function CheckUser(plr) -- Checks if user an admin
