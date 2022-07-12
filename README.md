@@ -1,6 +1,6 @@
 # LogModule
 
-{
+
 	==------------==
 	Made by fayking#8312
 
@@ -23,4 +23,3 @@
 	
 	.CheckAdmin(plr: Player)
 	Check if player is admin or not, if admin; player get access to Send Logs by saying the SendLogsCommand.
-}
