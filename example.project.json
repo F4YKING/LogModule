@@ -1,0 +1,19 @@
+{
+  "name": "LogModule-Example",
+  "tree": {
+    "$className": "DataModel",
+
+    "ServerStorage": {
+      "LogModule": {
+        "$path": "default.project.json"
+      }
+    },
+
+    "ServerScriptService": {
+        "LogScript": {
+          "$path": "test"
+        }
+    }
+
+  }
+}
