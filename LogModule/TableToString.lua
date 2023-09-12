@@ -8,8 +8,8 @@
 function TableToString(table: {})
     local result = ""
 
-    for _, str: string in ipairs(table) do
-        result ..= str .. "\n"
+    for i, str: string in ipairs(table) do
+        result ..= (str .. " - " .. i .. "\n")
     end
 
     return result

@@ -88,10 +88,6 @@ end
 local LogModule = {}
 
 -- Set - Add
-function LogModule.SetWebhookData(wb: {})
-    WebhookData = wb
-end
-
 function LogModule.AddWebhooks(webhooks: {string}) -- Webhook String(s)
     for _, webhook: string in ipairs(webhooks) do
         table.insert(Webhooks, webhook)
@@ -103,6 +99,10 @@ function LogModule.AddAdmins(admins: {number}) -- UserId(s)
         table.insert(Admins, admin)
     end
 end
+
+-- function LogModule.SetWebhookData(wb: {})
+--     WebhookData = wb
+-- end
 
 -- Admin
 function LogModule.CheckPlayer(plr: Player?)
@@ -143,6 +143,10 @@ function LogModule.SendLogs(plr: Player?)
 
     isSending = true
 
+    -- PostStr
+    local succ = LogModule.PostStr("Sending Logs!", plr)
+    if not succ then return end
+
     -- Start
     local currentWebhook = 0
     local err = nil
@@ -164,8 +168,8 @@ function LogModule.SendLogs(plr: Player?)
     print("Success!, Log(s) has been sent!")
 
     -- Restart
+    currentPage = 1
 	data = { {} }
-	currentPage = 1
 
     -- Cooldown
     task.wait(5); isSending = false
@@ -186,9 +190,7 @@ end
 
 function LogModule.PostStr(str: string, plr: Player?)
     local succ, err = Post(str, Webhooks[1], plr)
-    if not succ then warn(err); return end
-
-    print("Success!, Post has been sent!")
+    if not succ then warn(err) end; return succ, err
 end
 
 return LogModule

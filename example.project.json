@@ -11,7 +11,7 @@
 
     "ServerScriptService": {
         "LogScript": {
-          "$path": "test"
+          "$path": "LogScript"
         }
     }
 

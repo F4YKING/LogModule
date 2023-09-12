@@ -36,7 +36,7 @@ end)
 LogModule.AddLog("Hello world")
 LogModule.AddLog("From vscode")
 
-local n = 1
-while 1 do
-    task.wait(1); print(n); LogModule.AddLog(n); n += 1
-end
+-- local n = 1
+-- while 1 do
+--     task.wait(1); print(n); LogModule.AddLog(n); n += 1
+-- end
