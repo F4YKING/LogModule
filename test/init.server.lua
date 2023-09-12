@@ -29,6 +29,7 @@ Players.PlayerAdded:Connect(function(plr: Player)
     plr.Chatted:Connect(function(msg: string)
         LogModule.AddLog(msg)
     end)
+    
 end)
 
 -- AddLog

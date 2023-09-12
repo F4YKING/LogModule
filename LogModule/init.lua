@@ -47,6 +47,9 @@ local isSending = false
 
 local data = { {} }
 
+-- queue
+local msgQueue = {}
+
 ---- Functions ----
 -- CopyDict
 local CopyDict: (t: {}) -> {} = require(script.CopyDict)
@@ -114,8 +117,7 @@ function LogModule.CheckPlayer(plr: Player?)
 end
 
 -- Log
-function LogModule.AddLog(msg: string?)
-
+function LogModule.AddLog(msg: string?, noTime: boolean?)
 
     if Settings.DebugMode then print(msg) end
 
@@ -126,7 +128,10 @@ function LogModule.AddLog(msg: string?)
         currentPage+=1; data[currentPage] = {}
     end
 
-    table.insert(data[currentPage], msg)
+    msg = noTime and msg or os.date("[%X] - " .. msg)
+
+    local tab = isSending and msgQueue or data[currentPage]
+    table.insert(tab, msg)
 
 end
 
@@ -164,6 +169,18 @@ function LogModule.SendLogs(plr: Player?)
 
     -- Cooldown
     task.wait(5); isSending = false
+
+    -- msgQueue
+    if #msgQueue > 0 then
+        print(msgQueue)
+
+        for _, msg in ipairs(msgQueue) do
+            LogModule.AddLog(msg, true)
+        end
+
+        msgQueue = {}
+
+    end
 
 end
 
