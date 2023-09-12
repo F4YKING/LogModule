@@ -11,7 +11,9 @@ local LogModule = require(ServerStorage.LogModule)
 
 ---- Initializes ----
 ---- LogModule
-local Settings = require(script.Settings)
+local SettMod = script:FindFirstChild("TestSettings") or script.Settings
+
+local Settings =  require(SettMod)
 
 -- Setup
 LogModule.AddWebhooks(Settings.Webhooks)
