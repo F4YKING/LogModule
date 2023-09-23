@@ -13,7 +13,7 @@ local LogModule = require(ServerStorage.LogModule)
 ---- LogModule
 local SettMod = script:FindFirstChild("TestSettings") or script.Settings
 
-local Settings =  require(SettMod)
+local Settings = require(SettMod)
 
 -- Setup
 LogModule.AddWebhooks(Settings.Webhooks)
@@ -40,3 +40,15 @@ LogModule.AddLog("From vscode")
 -- while 1 do
 --     task.wait(1); print(n); LogModule.AddLog(n); n += 1
 -- end
+
+local CustomSettings = {
+
+    SendLogsCmd = ".dummy",
+    -- DebugMode = false,
+
+    MessagesPerPage = 16, -- How many messages in one page.
+    -- PageSend = 5, -- How many pages will be sent.
+
+}
+
+LogModule.SetSettings(CustomSettings)

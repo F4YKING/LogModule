@@ -9,7 +9,7 @@ function TableToString(table: {})
     local result = ""
 
     for i, str: string in ipairs(table) do
-        result ..= (str .. " - " .. i .. "\n")
+        result ..= (i .. str .. "\n")
     end
 
     return result

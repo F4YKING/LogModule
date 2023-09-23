@@ -11,7 +11,14 @@ local HttpService = game:GetService("HttpService")
 local gameId = game.GameId
 
 -- Settings
-local Settings = {
+export type LogSettings = {
+    SendLogsCmd: string,
+    DebugMode: boolean,
+    MessagesPerPage: number,
+    PageSend: number,
+}
+
+local Settings: LogSettings = {
 
     SendLogsCmd = ".logs",
     DebugMode = false,
@@ -100,6 +107,12 @@ function LogModule.AddAdmins(admins: {number}) -- UserId(s)
     end
 end
 
+function LogModule.SetSettings(set: LogSettings)
+    for i, v in pairs(set) do
+        Settings[i] = v
+    end
+end
+
 -- function LogModule.SetWebhookData(wb: {})
 --     WebhookData = wb
 -- end
@@ -128,7 +141,7 @@ function LogModule.AddLog(msg: string?, noTime: boolean?)
         currentPage+=1; data[currentPage] = {}
     end
 
-    msg = noTime and msg or os.date("[%X] - " .. msg)
+    msg = noTime and msg or os.date(" | [%X] - " .. msg)
 
     local tab = isSending and msgQueue or data[currentPage]
     table.insert(tab, msg)
