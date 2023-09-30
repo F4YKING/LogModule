@@ -9,7 +9,7 @@ authors = ["F4YKING"]
 realm = "server"
 registry = "https://github.com/UpliftGames/wally-index"
 
-# exclude = ["**"]
+exclude = ["**"]
 include = ["LogModule", "LogModule/*", "default.project.json", "wally.toml"]
 
 private = false
