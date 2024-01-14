@@ -8,7 +8,7 @@
 local HttpService = game:GetService("HttpService")
 
 -- GameId
-local gameId = game.GameId
+local placeId = game.PlaceId
 
 -- Settings
 export type LogSettings = {
@@ -36,8 +36,8 @@ local WebhookData = {
 
     ["embeds"] = {
         {
-            ["title"] = "Game Logs - " .. gameId,
-            ["url"] = "https://www.roblox.com/games/" .. gameId,
+            ["title"] = "Game Logs - " .. placeId,
+            ["url"] = "https://www.roblox.com/games/" .. placeId,
             ["description"] = "", -- Will send the logs pages here.
             ["color"] = 6989903,
 
